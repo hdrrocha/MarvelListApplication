@@ -8,7 +8,8 @@ import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
 import javax.inject.Singleton
 import com.example.marvellistapplication.api.NetworkModule
-
+import com.example.marvellistapplication.view.heroes.HeroesActivity
+import dagger.android.ContributesAndroidInjector
 
 
 @Module(includes = [
@@ -19,8 +20,8 @@ class AppModule
 
 @Module
 abstract class AndroidInjectorsModule {
-    //TODO
-
+    @ContributesAndroidInjector
+    abstract fun heroesActivity(): HeroesActivity
 }
 
 @Singleton
