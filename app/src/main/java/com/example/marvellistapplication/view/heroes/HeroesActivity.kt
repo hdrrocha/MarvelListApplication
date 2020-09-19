@@ -1,5 +1,6 @@
 package com.example.marvellistapplication.view.heroes
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marvellistapplication.R
 import com.example.marvellistapplication.api.model.SuperHero
+import com.example.marvellistapplication.view.hero.HeroDetailActivity
 import com.example.marvellistapplication.view_model.HeroesViewModel
 import com.example.marvellistapplication.view_model.ViewModelFactory
 import dagger.android.AndroidInjection
@@ -64,11 +66,11 @@ class HeroesActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@HeroesActivity, RecyclerView.VERTICAL, false)
             setHasFixedSize(true)
             adapter = HeroesAdapter(listHeroesView) { hero ->
-                //TODO
+                partItemClicked(hero)
             }
             adapter!!.notifyDataSetChanged()
             scrollToPosition(currentPosition)
-            progress_bar.visibility = View.GONE
+
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     if (dy > 0) {
@@ -90,6 +92,13 @@ class HeroesActivity : AppCompatActivity() {
                 }
             })
         })
+    }
+
+    private fun partItemClicked(superHero : SuperHero) {
+        val intent = Intent(this, HeroDetailActivity::class.java)
+        var idOrganization = superHero.id.toString()
+        intent.putExtra("superHero", idOrganization)
+        startActivity(intent)
     }
 
 }

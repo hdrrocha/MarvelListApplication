@@ -10,7 +10,7 @@ class ApiClient @Inject constructor(private val marvelApi: MarvelApiApi) {
         return marvelApi.characters(apiKey, hashApi, offset)
     }
 
-    fun charactersId(id: Long, apiKey: String, hashApi: String): Observable<Response> {
+    fun charactersId(id: String, apiKey: String, hashApi: String): Observable<Response> {
         return marvelApi.charactersId(id, apiKey, hashApi)
     }
 }

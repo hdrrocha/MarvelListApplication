@@ -30,7 +30,7 @@ interface MarvelApiApi {
 
     @GET("characters/{id}?limit=7&ts=1")
     fun charactersId(
-        @Path("id") id: Long,
+        @Path("id") id: String,
         @Query("apikey") apiKey: String,
         @Query("hash") hashApi: String
     ): Observable<Response>

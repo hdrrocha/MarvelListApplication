@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MarvelListApplication</string>
+    <string name="warning_no_hero">\"Ainda não existem informações cadastradas \n para este herói! =(\"</string>
 </resources>
